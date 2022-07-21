@@ -24,5 +24,5 @@ for negacion in ver_fal[1]:
 if continuar != None and interaccion == False:
     print("(Entrada invalida) Parece que no esta hablando con nosotros 👀...")
 
-
-
+continuar.split()
+print(continuar)
