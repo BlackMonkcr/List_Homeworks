@@ -8,13 +8,13 @@ ver_fal = [
 
 interaccion = False
 print("¿Quieres realizar alguna acción?")
-continuar = reconocimiento_voz(10)
+continuar = reconocimiento_voz()
 
 for afirmacion in ver_fal[0]:
     if continuar == afirmacion:
         interaccion = True
         print("¿Que quieres que hagamos por ti?")
-        voz_text = reconocimiento_voz(30)
+        voz_text = reconocimiento_voz()
 
 for negacion in ver_fal[1]:
     if continuar == negacion:

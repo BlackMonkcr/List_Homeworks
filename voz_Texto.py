@@ -1,37 +1,32 @@
 import speech_recognition as sr
-import time
 
-def reconocimiento_voz(secconds):
-    reconocedor = sr.Recognizer()
+def reconocimiento_voz():
+    r = sr.Recognizer()  #recognizer
 
-    ''' Grabando Audio '''
     with sr.Microphone() as source:
-        '''Ajusta el Audio'''
-        reconocedor.adjust_for_ambient_noise(source, duration=1)
-        print("\nGrabando audio por 5 segundos")
-        audio_grabado = reconocedor.listen(source, timeout=int(secconds))
 
-        ''' for second in range(5):
-            print(str(second) + "...")
-            time.sleep(1) '''
+        #Ajusta el Audio
+        r.adjust_for_ambient_noise(source, duration=1)
 
-        print("Grabación Exitosa")
+        #Inicia la grabacion
+        print("Puedes hablar:")
+        audio = r.listen(source)
+        print("-")
 
-    ''' Reconociendo el Audio '''
 
+    #Pasar de audio a texto
     try:
-        ''' Reconoce el Texto '''
-        texto = reconocedor.recognize_google\
-                (
-            audio_grabado,
-            language="es-PE"
-                )
+        texto = r.recognize_google(audio,language="es-PE")
 
         print("\nResultado: {} \n".format(texto))
 
-    except Exception as ex:
+    except sr.UnknownValueError:
+        print("No ha dicho nada o no se le entendió")
+        texto = "E-UKV"
+    except sr.RequestError as e:
+        print("Google no respondió")
+        texto = "E-NR"
 
-        texto = print("\nNo ha dicho nada (Asegurese de tener el microfono encendido)")
-        texto = print(ex)
 
+    #retorna el texto
     return texto
