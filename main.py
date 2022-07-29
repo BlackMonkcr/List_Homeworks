@@ -1,28 +1,37 @@
-from voz_Texto import *
+while True:
+    interaccion = input("¿Quieres realizar alguna accion? (Y/N): ")
 
-ver_fal = [
-           ["SI", "Si", "si", "SIU", "Siu", "siu", "SÍ", "Sí", "sí"],
-           ["NO", "No", "no", "NOU", "Nou", "nou"]
-          ]
+    if interaccion.lower() != "n":
+
+        #Menu de opciones
+        if interaccion.lower() == "y":
+            print("\n¿Que accion desea realizar?\n")
+            print("1. Registrar Tarea")
+            print("2. Editar Tarea")
+            print("3. Eliminar Tarea")
+            print()
+
+            #Verificacion de opcion
+            accion = input("Indica una opcion (numero): ")
+
+            if accion == "1":
+                #REGISTRO
+                print("\nREGISTRAR TAREA\n")
 
 
-interaccion = False
-print("¿Quieres realizar alguna acción?")
-continuar = reconocimiento_voz()
+            elif accion == "2":
+                #EDICION
+                print("\nEDITAR TAREA\n")
 
-for afirmacion in ver_fal[0]:
-    if continuar == afirmacion:
-        interaccion = True
-        print("¿Que quieres que hagamos por ti?")
-        voz_text = reconocimiento_voz()
 
-for negacion in ver_fal[1]:
-    if continuar == negacion:
-        interaccion = True
-        print("Entendido, estaremos aqui cuando nos necesites ;)")
+            elif accion == "3":
+                #ELIMINACION
+                print("\nELIMINAR TAREA\n")
 
-if continuar != None and interaccion == False:
-    print("(Entrada invalida) Parece que no esta hablando con nosotros 👀...")
 
-continuar.split()
-print(continuar)
+            else:
+                #NO OPTION
+                print("\nNinguna opcion ingresada\n")
+    else:
+        break;
+
